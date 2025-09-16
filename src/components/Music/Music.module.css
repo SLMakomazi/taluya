@@ -12,15 +12,70 @@
   padding: 0 1.5rem;
 }
 
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
 .title {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  position: relative;
+  margin-bottom: 1rem;
   color: #fff;
-  display: block;
-  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #bbb;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.actionItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(255, 20, 147, 0.2);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 20, 147, 0.3);
+}
+
+.actionItem:hover {
+  background: rgba(255, 20, 147, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 20, 147, 0.2);
+}
+
+/* Style for HearThis link */
+.ajaxloader {
+  color: white !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.ajaxloader:hover {
+  color: #ff1493 !important;
+  text-decoration: underline;
 }
 
 .title::after {

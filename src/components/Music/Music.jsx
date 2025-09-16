@@ -41,9 +41,15 @@ const Music = () => {
   return (
     <section id="music" className={styles.music} ref={sectionRef}>
       <div className={styles.container}>
-        <h2 className={styles.title} ref={titleRef}>
-          Latest Mix
-        </h2>
+        <div className={styles.header} ref={titleRef}>
+          <h2 className={styles.title}>Latest Mix</h2>
+          <p className={styles.subtitle}>Fresh beats and smooth rhythms to elevate your vibe</p>
+          <div className={styles.actions}>
+            <span className={styles.actionItem}><span role="img" aria-label="Play">▶️</span> Play</span>
+            <span className={styles.actionItem}><span role="img" aria-label="Download">⬇️</span> Download</span>
+            <span className={styles.actionItem}><span role="img" aria-label="Enjoy">🎧</span> Enjoy</span>
+          </div>
+        </div>
         
         <div className={styles.content} ref={contentRef}>
           <div className={styles.playerContainer}>
