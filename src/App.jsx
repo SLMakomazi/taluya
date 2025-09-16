@@ -15,6 +15,7 @@ import Events from './components/Events/Events';
 import Gallery from './components/Gallery/Gallery';
 import Merch from './components/Merch/Merch';
 import Equipment from './components/Equipment/Equipment';
+import Bookings from './components/Bookings/Bookings';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 
@@ -70,10 +71,10 @@ function App() {
                 <Gallery />
                 <Equipment />
                 <Merch />
-                <Contact />
               </>
             } />
-            {/* Add more routes as needed */}
+            <Route path="/bookings" element={<Bookings />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />

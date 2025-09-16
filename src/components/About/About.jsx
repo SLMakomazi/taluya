@@ -59,7 +59,8 @@ const About = () => {
         </div>
         <div className={styles.imageContainer} ref={imageRef}>
           <div className={styles.imageWrapper}>
-            {/* Replace with actual image path */}
+            
+            <img src="C:\Users\Wipro\CascadeProjects\taluya\src\assets\heroImages\487460468_4113766728951079_631340646104197273_n.jpg" alt="" />
             <div className={styles.placeholderImage}></div>
           </div>
         </div>
