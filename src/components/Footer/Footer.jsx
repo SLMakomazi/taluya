@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Footer.module.css';
@@ -8,9 +8,32 @@ gsap.registerPlugin(ScrollTrigger);
 const Footer = () => {
   const footerRef = useRef(null);
   const contentRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
+  // Show/hide floating button based on scroll position
   useEffect(() => {
-    // Animation for footer
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  // Animation for footer
+  useEffect(() => {
     gsap.fromTo(
       contentRef.current,
       { opacity: 0, y: 30 },
@@ -28,13 +51,6 @@ const Footer = () => {
     );
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
   const currentYear = new Date().getFullYear();
 
   return (
@@ -43,7 +59,7 @@ const Footer = () => {
         <div className={styles.footerContent}>
           <div className={styles.footerLogo}>
             <h2>TA LUYA</h2>
-            <p>Electronic Music Producer & DJ</p>
+            <p>Music Artist & DJ</p>
           </div>
           
           <div className={styles.footerLinks}>
@@ -66,26 +82,6 @@ const Footer = () => {
             <p>Cape Town, South Africa</p>
           </div>
           
-          <div className={styles.footerSocial}>
-            <h3>Follow Me</h3>
-            <div className={styles.socialIcons}>
-              <a href="https://soundcloud.com/taluya" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">
-                <i className="fab fa-soundcloud"></i>
-              </a>
-              <a href="https://mixcloud.com/taluya" target="_blank" rel="noopener noreferrer" aria-label="Mixcloud">
-                <i className="fab fa-mixcloud"></i>
-              </a>
-              <a href="https://instagram.com/taluya" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="https://youtube.com/taluya" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                <i className="fab fa-youtube"></i>
-              </a>
-              <a href="https://open.spotify.com/artist/taluya" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-                <i className="fab fa-spotify"></i>
-              </a>
-            </div>
-          </div>
         </div>
         
         <div className={styles.footerBottom}>
@@ -95,15 +91,26 @@ const Footer = () => {
             <span>|</span>
             <a href="/terms">Terms of Service</a>
           </div>
-          <button 
-            className={styles.backToTop} 
-            onClick={scrollToTop}
-            aria-label="Back to top"
-          >
-            <i className="fas fa-arrow-up"></i>
-          </button>
+          <p className={styles.credit}>
+            Created by{' '}
+            <a 
+              href="https://calvin-tech-solutions.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.creditLink}
+            >
+              Calvin Tech Solutions
+            </a>
+          </p>
         </div>
       </div>
+      <button 
+        className={`${styles.floatingButton} ${isVisible ? styles.visible : ''}`}
+        onClick={scrollToTop}
+        aria-label="Back to top"
+      >
+        <i className="fas fa-arrow-up"></i>
+      </button>
     </footer>
   );
 };

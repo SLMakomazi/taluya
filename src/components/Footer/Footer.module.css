@@ -13,18 +13,24 @@
 }
 
 .footerContent {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   gap: 40px;
-  margin-bottom: 50px;
+  margin: 0 auto 50px;
+  max-width: 1200px;
+  padding: 0 20px;
+  width: 100%;
 }
 
 .footerLogo,
 .footerLinks,
-.footerContact,
-.footerSocial {
-  flex: 1;
-  min-width: 200px;
+.footerContact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 15px;
 }
 
 .footerLogo h2 {
@@ -33,9 +39,11 @@
   font-weight: 800;
   margin: 0 0 10px;
   background: linear-gradient(45deg, #ff1493, #8a2be2);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 2px;
+  text-align: center;
 }
 
 .footerLogo p {
@@ -63,7 +71,8 @@
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 40px;
   height: 2px;
   background: linear-gradient(90deg, #ff1493, #8a2be2);
@@ -73,6 +82,9 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footerLinks li {
@@ -169,6 +181,7 @@
 .socialIcons a:nth-child(5):hover { background: #1DB954; border-color: #1DB954; } /* Spotify */
 
 .footerBottom {
+  position: relative;
   border-top: 1px solid #1a1a1a;
   padding: 20px 0;
   display: flex;
@@ -208,6 +221,30 @@
   font-size: 0.8rem;
 }
 
+.credit {
+  margin: 0;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.credit {
+  margin: 0;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.creditLink {
+  color: #ff1493;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.creditLink:hover {
+  color: #ff66b3;
+  text-decoration: underline;
+}
+
 .backToTop {
   width: 40px;
   height: 40px;
@@ -230,6 +267,39 @@
   box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
 }
 
+.floatingButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff1493, #8a2be2);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+
+.floatingButton.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.floatingButton:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+}
+
 /* Responsive styles */
 @media (max-width: 992px) {
   .footerContent {
@@ -241,6 +311,31 @@
   .footerContact,
   .footerSocial {
     flex: 1 1 45%;
+  }
+}
+
+@media (max-width: 992px) {
+  .footerContent {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  
+  .footerLogo {
+    grid-column: 1 / -1;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerContent {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .footerLogo,
+  .footerLinks,
+  .footerContact {
+    padding: 0;
   }
 }
 
