@@ -1,0 +1,239 @@
+.events {
+  padding: 100px 0;
+  background-color: #0a0a0a;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff1493, #8a2be2);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+.loading,
+.noEvents {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #888;
+  padding: 40px 0;
+}
+
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.eventCard {
+  background: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.eventCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(138, 43, 226, 0.2);
+  border-color: #ff1493;
+}
+
+.eventImage {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholderImage {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-family: 'Poppins', sans-serif;
+}
+
+.eventContent {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.dateContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: #ff1493;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.day {
+  font-size: 2rem;
+  margin-right: 8px;
+  line-height: 1;
+}
+
+.month {
+  margin-right: 5px;
+}
+
+.year {
+  color: #888;
+  margin-left: auto;
+}
+
+.eventDetails {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.venue {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  margin: 0 0 10px 0;
+  color: #fff;
+}
+
+.location {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.city,
+.time {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+}
+
+.city::before {
+  content: '📍';
+  margin-right: 5px;
+}
+
+.time::before {
+  content: '🕒';
+  margin-right: 5px;
+}
+
+.price {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #8a2be2;
+  margin: 10px 0 15px;
+}
+
+.ctaButton {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg, #ff1493, #8a2be2);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  margin-top: auto;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .eventsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .events {
+    padding: 60px 0;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .eventsGrid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .eventCard {
+    margin: 0 -15px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+  
+  .venue {
+    font-size: 1.2rem;
+  }
+  
+  .price {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Signature T-Shirt",
+      "description": "Premium quality cotton t-shirt with Ta Luya logo",
+      "price": 29.99,
+      "image": "/images/merch/tshirt.jpg",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["Black", "White", "Grey"],
+      "isNew": true,
+      "isBestSeller": true,
+      "category": "apparel",
+      "stock": 42
+    },
+    {
+      "id": 2,
+      "name": "Logo Cap",
+      "description": "Adjustable snapback cap with embroidered logo",
+      "price": 24.99,
+      "image": "/images/merch/cap.jpg",
+      "sizes": ["One Size"],
+      "colors": ["Black", "Navy"],
+      "isNew": false,
+      "isBestSeller": true,
+      "category": "accessories",
+      "stock": 28
+    },
+    {
+      "id": 3,
+      "name": "Vinyl Sticker Pack",
+      "description": "Set of 3 high-quality vinyl stickers",
+      "price": 9.99,
+      "image": "/images/merch/stickers.jpg",
+      "sizes": ["One Size"],
+      "colors": ["Assorted"],
+      "isNew": true,
+      "isBestSeller": false,
+      "category": "accessories",
+      "stock": 65
+    }
+  ]
+}

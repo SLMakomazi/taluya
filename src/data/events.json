@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "AfroTech Festival",
+    "date": "2023-11-15",
+    "time": "22:00",
+    "venue": "The Waiting Room",
+    "city": "Cape Town",
+    "country": "South Africa",
+    "description": "Join us for a night of deep Afro-house and electronic beats at one of Cape Town's most iconic venues.",
+    "ticketUrl": "#",
+    "image": "/images/events/afrotech-festival.jpg",
+    "isFeatured": true
+  },
+  {
+    "id": 2,
+    "title": "Sunset Sessions",
+    "date": "2023-11-22",
+    "time": "18:00",
+    "venue": "Mozambik V&A",
+    "city": "Cape Town",
+    "country": "South Africa",
+    "description": "Chill vibes and deep house as the sun sets over the V&A Waterfront.",
+    "ticketUrl": "#",
+    "image": "/images/events/sunset-sessions.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Underground Grooves",
+    "date": "2023-12-05",
+    "time": "23:00",
+    "venue": "Modular",
+    "city": "Johannesburg",
+    "country": "South Africa",
+    "description": "A night of underground electronic music in the heart of Johannesburg.",
+    "ticketUrl": "#",
+    "image": "/images/events/underground-grooves.jpg"
+  },
+  {
+    "id": 4,
+    "title": "New Year's Eve Special",
+    "date": "2023-12-31",
+    "time": "20:00",
+    "venue": "Camps Bay Beach Club",
+    "city": "Cape Town",
+    "country": "South Africa",
+    "description": "Ring in the new year with an unforgettable night of music by the beach.",
+    "ticketUrl": "#",
+    "image": "/images/events/nye-special.jpg",
+    "isFeatured": true
+  }
+]

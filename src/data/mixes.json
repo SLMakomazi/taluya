@@ -1,0 +1,109 @@
+[
+  {
+    "id": 1,
+    "title": "Afro House Journey",
+    "description": "A deep dive into the soul of Afro House with Ta Luya's signature sound. Recorded live at The Waiting Room, Cape Town.",
+    "duration": "1:23:45",
+    "date": "2023-10-15",
+    "image": "/images/mixes/afro-house-journey.jpg",
+    "audioUrl": "/audio/mixes/afro-house-journey.mp3",
+    "platforms": {
+      "soundcloud": "https://soundcloud.com/taluya/afro-house-journey",
+      "mixcloud": "https://www.mixcloud.com/taluya/afro-house-journey/",
+      "hearthis": "https://hearthis.at/taluya/afro-house-journey/"
+    },
+    "tracklist": [
+      "Artist - Track Name (Original Mix)",
+      "Artist - Track Name (Remix)",
+      "Artist - Track Name (Original Mix)",
+      "Artist - Track Name (Ta Luya Remix)",
+      "Artist - Track Name (Original Mix)",
+      "Artist - Track Name (Original Mix)",
+      "Artist - Track Name (Original Mix)",
+      "Artist - Track Name (Original Mix)",
+      "Artist - Track Name (Original Mix)",
+      "Artist - Track Name (Original Mix)",
+      "Artist - Track Name (Original Mix)",
+      "Artist - Track Name (Original Mix)",
+      "Artist - Track Name (Original Mix)",
+      "Artist - Track Name (Original Mix)",
+      "Artist - Track Name (Original Mix)"
+    ],
+    "isFeatured": true
+  },
+  {
+    "id": 2,
+    "title": "Deep in the Night",
+    "description": "Late night deep house vibes with Ta Luya. Perfect for those introspective moments.",
+    "duration": "1:15:22",
+    "date": "2023-09-28",
+    "image": "/images/mixes/deep-in-the-night.jpg",
+    "audioUrl": "/audio/mixes/deep-in-the-night.mp3",
+    "platforms": {
+      "soundcloud": "https://soundcloud.com/taluya/deep-in-the-night",
+      "mixcloud": "https://www.mixcloud.com/taluya/deep-in-the-night/",
+      "hearthis": "https://hearthis.at/taluya/deep-in-the-night/"
+    },
+    "isFeatured": false
+  },
+  {
+    "id": 3,
+    "title": "Sunrise Sessions",
+    "description": "Morning grooves to start your day right. Recorded live at the beach in Camps Bay.",
+    "duration": "1:45:10",
+    "date": "2023-09-10",
+    "image": "/images/mixes/sunrise-sessions.jpg",
+    "audioUrl": "/audio/mixes/sunrise-sessions.mp3",
+    "platforms": {
+      "soundcloud": "https://soundcloud.com/taluya/sunrise-sessions",
+      "mixcloud": "https://www.mixcloud.com/taluya/sunrise-sessions/",
+      "hearthis": "https://hearthis.at/taluya/sunrise-sessions/"
+    },
+    "isFeatured": true
+  },
+  {
+    "id": 4,
+    "title": "Urban Rhythms",
+    "description": "A fusion of urban beats and electronic elements. Something different from Ta Luya.",
+    "duration": "1:08:33",
+    "date": "2023-08-22",
+    "image": "/images/mixes/urban-rhythms.jpg",
+    "audioUrl": "/audio/mixes/urban-rhythms.mp3",
+    "platforms": {
+      "soundcloud": "https://soundcloud.com/taluya/urban-rhythms",
+      "mixcloud": "https://www.mixcloud.com/taluya/urban-rhythms/",
+      "hearthis": "https://hearthis.at/taluya/urban-rhythms/"
+    },
+    "isFeatured": false
+  },
+  {
+    "id": 5,
+    "title": "Afro Tech Vol. 1",
+    "description": "The first installment of Ta Luya's Afro Tech series. Driving beats and hypnotic melodies.",
+    "duration": "1:32:18",
+    "date": "2023-08-05",
+    "image": "/images/mixes/afro-tech-vol1.jpg",
+    "audioUrl": "/audio/mixes/afro-tech-vol1.mp3",
+    "platforms": {
+      "soundcloud": "https://soundcloud.com/taluya/afro-tech-vol1",
+      "mixcloud": "https://www.mixcloud.com/taluya/afro-tech-vol1/",
+      "hearthis": "https://hearthis.at/taluya/afro-tech-vol1/"
+    },
+    "isFeatured": true
+  },
+  {
+    "id": 6,
+    "title": "Soulful Sundays",
+    "description": "Chill vibes for your Sunday afternoon. Smooth sounds and soulful melodies.",
+    "duration": "1:18:45",
+    "date": "2023-07-30",
+    "image": "/images/mixes/soulful-sundays.jpg",
+    "audioUrl": "/audio/mixes/soulful-sundays.mp3",
+    "platforms": {
+      "soundcloud": "https://soundcloud.com/taluya/soulful-sundays",
+      "mixcloud": "https://www.mixcloud.com/taluya/soulful-sundays/",
+      "hearthis": "https://hearthis.at/taluya/soulful-sundays/"
+    },
+    "isFeatured": false
+  }
+]

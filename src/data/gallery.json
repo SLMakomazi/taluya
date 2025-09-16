@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Live at Afropunk",
+    "image": "/images/gallery/afropunk-1.jpg",
+    "category": "live"
+  },
+  {
+    "id": 2,
+    "title": "Studio Session",
+    "image": "/images/gallery/studio-1.jpg",
+    "category": "studio"
+  },
+  {
+    "id": 3,
+    "title": "Sunset Performance",
+    "image": "/images/gallery/sunset-1.jpg",
+    "category": "live"
+  },
+  {
+    "id": 4,
+    "title": "Backstage at Rocking the Daisies",
+    "image": "/images/gallery/daisies-1.jpg",
+    "category": "behind-the-scenes"
+  },
+  {
+    "id": 5,
+    "title": "DJ Set at The Waiting Room",
+    "image": "/images/gallery/waiting-room-1.jpg",
+    "category": "live"
+  },
+  {
+    "id": 6,
+    "title": "Recording Session",
+    "image": "/images/gallery/studio-2.jpg",
+    "category": "studio"
+  },
+  {
+    "id": 7,
+    "title": "Festival Crowd",
+    "image": "/images/gallery/festival-crowd.jpg",
+    "category": "live"
+  },
+  {
+    "id": 8,
+    "title": "Soundcheck",
+    "image": "/images/gallery/soundcheck.jpg",
+    "category": "behind-the-scenes"
+  },
+  {
+    "id": 9,
+    "title": "Sunrise Set",
+    "image": "/images/gallery/sunrise-set.jpg",
+    "category": "live"
+  },
+  {
+    "id": 10,
+    "title": "Mixing New Tracks",
+    "image": "/images/gallery/studio-3.jpg",
+    "category": "studio"
+  },
+  {
+    "id": 11,
+    "title": "Backstage at Afropunk",
+    "image": "/images/gallery/afropunk-2.jpg",
+    "category": "behind-the-scenes"
+  },
+  {
+    "id": 12,
+    "title": "Crowd Interaction",
+    "image": "/images/gallery/crowd-interaction.jpg",
+    "category": "live"
+  }
+]
