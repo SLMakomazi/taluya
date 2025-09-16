@@ -1,6 +1,6 @@
 .music {
-  padding: 100px 0;
-  background-color: #0f0f0f;
+  padding: 6rem 0;
+  background: #0a0a0a;
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -9,19 +9,18 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1.5rem;
 }
 
 .title {
-  text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
+  text-align: center;
   margin-bottom: 3rem;
   position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
   color: #fff;
+  display: block;
+  width: 100%;
 }
 
 .title::after {
@@ -37,241 +36,88 @@
 
 .content {
   display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
-.mixPlayer {
-  flex: 1;
-  min-width: 300px;
-  max-width: 500px;
-  background: #1a1a1a;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  padding: 30px;
-  transition: all 0.3s ease;
-  border: 1px solid #333;
-}
-
-.mixPlayer:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(138, 43, 226, 0.2);
-}
-
-.mixCover {
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-.coverImage {
+.playerContainer {
+  background: rgba(20, 20, 20, 0.9);
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
   width: 100%;
-  aspect-ratio: 1;
-  background: #222;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  position: relative;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  max-width: 1200px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
 }
 
-.placeholderCover {
+.iframeContainer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 40%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+.iframeContainer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #555;
-  font-family: 'Poppins', sans-serif;
-}
-
-.mixInfo {
-  text-align: center;
-}
-
-.mixTitle {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.5rem;
-  margin: 0 0 5px 0;
-  color: #fff;
-}
-
-.mixPlatform {
-  color: #ff1493;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
-  margin: 0 0 5px 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.mixDate {
-  color: #888;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-.audioControls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 25px 0;
-  gap: 20px;
-}
-
-.controlButton {
-  background: none;
   border: none;
-  color: #fff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  border: 1px solid #333;
-}
-
-.controlButton:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ff1493;
-  border-color: #ff1493;
-}
-
-.arrowLeft, .arrowRight {
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid currentColor;
-  border-left: 2px solid currentColor;
-  transform: rotate(-45deg);
-}
-
-.arrowRight {
-  transform: rotate(135deg);
-}
-
-.playButton {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #ff1493, #8a2be2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
-}
-
-.playButton:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
-}
-
-.playIcon {
-  width: 0;
-  height: 0;
-  border-top: 12px solid transparent;
-  border-left: 20px solid #fff;
-  border-bottom: 12px solid transparent;
-  margin-left: 5px;
-}
-
-.platformButton {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  background: transparent;
-  color: #fff;
-  border: 1px solid #ff1493;
-  border-radius: 5px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.8rem;
-}
-
-.platformButton:hover {
-  background: rgba(255, 20, 147, 0.1);
-  color: #ff1493;
-  box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
-}
-
-.mixList {
-  flex: 1;
-  min-width: 300px;
-  max-width: 500px;
-}
-
-.moreMixesTitle {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
-  margin: 0 0 20px 0;
-  color: #fff;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #333;
-}
-
-.mixThumbnails {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.mixThumbnail {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  background: #1a1a1a;
   border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid #333;
 }
 
-.mixThumbnail:hover, .mixThumbnail.active {
-  background: #222;
-  transform: translateX(5px);
-  border-color: #ff1493;
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .music {
+    padding: 3rem 0;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .playerContainer {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .iframeContainer {
+    padding-bottom: 75%;
+    border-radius: 8px;
+  }
 }
 
-.thumbnailImage {
-  width: 60px;
-  height: 60px;
-  background: #2a2a2a;
-  border-radius: 5px;
-  margin-right: 15px;
-  flex-shrink: 0;
+/* Laptop screens (769px - 1199px) */
+@media (min-width: 769px) and (max-width: 1199px) {
+  .playerContainer {
+    max-width: 1000px;
+    padding: 2.5rem;
+  }
+  
+  .iframeContainer {
+    padding-bottom: 50%;
+  }
 }
 
-.thumbnailInfo {
-  display: flex;
-  flex-direction: column;
-}
-
-.thumbnailTitle {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  color: #fff;
-  margin-bottom: 3px;
-}
-
-.thumbnailDate {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.8rem;
-  color: #888;
+/* Desktop screens (1200px and up) */
+@media (min-width: 1200px) {
+  .playerContainer {
+    max-width: 1200px;
+    padding: 3.5rem;
+  }
+  
+  .iframeContainer {
+    padding-bottom: 40%;
+    max-height: 600px;
+  }
 }
 
 /* Responsive styles */
