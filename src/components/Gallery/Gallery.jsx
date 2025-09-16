@@ -19,29 +19,11 @@ const Gallery = () => {
   const lightboxRef = useRef(null);
   const galleryGridRef = useRef(null);
 
-  // Load gallery items from heroImages.json
-  useEffect(() => {
-    try {
-      const items = heroImages.images.map((src, index) => ({
-        id: index + 1,
-        src,
-        alt: `Gallery Image ${index + 1}`,
-      }));
-
-      setGalleryItems(items);
-      setLoading(false);
-
-      setTimeout(initAnimations, 100);
-    } catch (error) {
-      console.error('Error loading gallery images:', error);
-      setLoading(false);
-    }
-  }, []);
-
   // Initialize GSAP animations
   const initAnimations = useCallback(() => {
-    if (!titleRef.current || !contentRef.current) return;
+    if (!titleRef.current || !contentRef.current || !sectionRef.current) return;
 
+    // Title animation
     gsap.fromTo(
       titleRef.current,
       { opacity: 0, y: 50 },
@@ -58,31 +40,72 @@ const Gallery = () => {
       }
     );
 
-    if (galleryGridRef.current) {
-      const items = galleryGridRef.current.querySelectorAll(
-        `.${styles.galleryItem}`
-      );
+    // Content animation
+    gsap.fromTo(
+      contentRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  }, [sectionRef, titleRef, contentRef]);
 
-      items.forEach((item, index) => {
-        gsap.fromTo(
-          item,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            delay: index * 0.05,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: item,
-              start: 'top 90%',
-              toggleActions: 'play none none none',
-            },
-          }
-        );
-      });
+  // Load gallery items and initialize animations
+  useEffect(() => {
+    try {
+      const items = heroImages.images.map((src, index) => ({
+        id: index + 1,
+        src,
+        alt: `Gallery Image ${index + 1}`,
+      }));
+
+      setGalleryItems(items);
+      setLoading(false);
+
+      const timer = setTimeout(initAnimations, 100);
+      return () => clearTimeout(timer);
+    } catch (error) {
+      console.error('Error loading gallery images:', error);
+      setLoading(false);
     }
-  }, []);
+  }, [initAnimations]);
+
+  // Animate gallery items
+  useEffect(() => {
+    if (!galleryGridRef.current) return;
+
+    const items = galleryGridRef.current.querySelectorAll(
+      `.${styles.galleryItem}`
+    );
+
+    items.forEach((item, index) => {
+      gsap.fromTo(
+        item,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: index * 0.05,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    });
+  }, [galleryItems, visibleItems]);
 
   // Lightbox controls
   const openLightbox = useCallback((item) => {
@@ -104,7 +127,7 @@ const Gallery = () => {
         );
       }
     });
-  }, []);
+  }, [lightboxRef]);
 
   const closeLightbox = useCallback(() => {
     if (!lightboxRef.current) return;
@@ -126,9 +149,9 @@ const Gallery = () => {
         setSelectedImage(null);
       },
     });
-  }, []);
+  }, [lightboxRef]);
 
-  const navigateImage = (direction) => {
+  const navigateImage = useCallback((direction) => {
     if (!selectedImage) return;
 
     const currentIndex = galleryItems.findIndex(
@@ -141,7 +164,7 @@ const Gallery = () => {
         : (currentIndex + 1) % galleryItems.length;
 
     setSelectedImage(galleryItems[newIndex]);
-  };
+  }, [galleryItems, selectedImage]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -161,7 +184,7 @@ const Gallery = () => {
       document.body.style.top = '';
       document.body.style.width = '';
     };
-  }, [selectedImage, galleryItems, closeLightbox]);
+  }, [selectedImage, closeLightbox, navigateImage]);
 
   return (
     <section id="gallery" className={styles.gallery} ref={sectionRef}>

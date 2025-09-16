@@ -69,7 +69,7 @@ const Equipment = () => {
     return (
       <section className={`${styles.equipment} section`} ref={sectionRef} id="equipment">
         <div className="container">
-          <h2 className="section-title">My Equipment</h2>
+          <h2 className="section-title">Entertainment Equipment Hire</h2>
           <div className={styles.loading}>
             <i className="fas fa-spinner fa-spin"></i> Loading equipment...
           </div>
@@ -82,7 +82,7 @@ const Equipment = () => {
     return (
       <section className={`${styles.equipment} section`} ref={sectionRef} id="equipment">
         <div className="container">
-          <h2 className="section-title">My Equipment</h2>
+          <h2 className="section-title">Entertainment Equipment Hire</h2>
           <div className={styles.error}>
             <i className="fas fa-exclamation-circle"></i> {error}
           </div>
@@ -94,12 +94,12 @@ const Equipment = () => {
   return (
     <section className={`${styles.equipment} section`} ref={sectionRef} id="equipment">
       <Helmet>
-        <title>My Equipment | Ta Luya</title>
-        <meta name="description" content="Explore the professional equipment I use for music production and performances" />
+        <title>Entertainment Equipment Hire | Ta Luya</title>
+        <meta name="description" content="Professional entertainment equipment for hire. High-quality audio and lighting equipment for events and performances." />
       </Helmet>
       
       <div className="container">
-        <h2 className="section-title" ref={titleRef}>My Equipment</h2>
+        <h2 className="section-title" ref={titleRef}>Entertainment Equipment Hire</h2>
         
         <div className={styles.equipmentGrid} ref={contentRef}>
           {equipmentItems.length > 0 ? (
