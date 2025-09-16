@@ -24,17 +24,20 @@
 .title {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5rem;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
   position: relative;
-  display: inline-block;
   color: #fff;
+  text-align: center;
+  display: block;
+  width: 100%;
 }
 
 .title::after {
   content: '';
   position: absolute;
   bottom: -10px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 60px;
   height: 3px;
   background: linear-gradient(90deg, #ff1493, #8a2be2);
@@ -43,8 +46,10 @@
 .bio {
   font-family: 'Poppins', sans-serif;
   line-height: 1.8;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
   color: #ccc;
+  text-align: center;
+  max-width: 800px;
   font-size: 1.1rem;
 }
 
@@ -84,9 +89,31 @@
 .imageContainer {
   flex: 1;
   min-width: 300px;
+  max-width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: sticky;
+  top: 2rem;
+  align-self: stretch;
+  height: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .twoColumnLayout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .imageContainer {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    height: auto;
+    min-height: 300px;
+  }
 }
 
 .imageWrapper {
@@ -98,6 +125,17 @@
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   border: 1px solid #333;
+}
+
+.aboutImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.aboutImage:hover {
+  transform: scale(1.05);
 }
 
 .placeholderImage {
@@ -129,6 +167,202 @@
 .imageWrapper:hover::before {
   opacity: 1;
   filter: blur(3px);
+}
+
+/* Two Column Layout */
+.twoColumnLayout {
+  display: flex;
+  gap: 3rem;
+  align-items: stretch; /* Make columns match in height */
+  margin: 2rem 0;
+  position: relative;
+}
+
+/* Experience Section */
+.experienceSection {
+  flex: 1;
+  min-width: 0; /* Prevents flex item from overflowing */
+  margin: 0;
+  padding: 1.5rem;
+  background: rgba(20, 20, 20, 0.6);
+  border-radius: 8px;
+  border-left: 3px solid #ff1493;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sectionTitle {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  margin: 1.5rem 0 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.sectionTitle:first-child {
+  margin-top: 0;
+}
+
+.experienceList,
+.strengthsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.experienceList li,
+.strengthsList li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: #ddd;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+}
+
+.experienceList li::before {
+  content: '→';
+  color: #8a2be2;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.strengthsList li::before {
+  content: '★';
+  color: #ff1493;
+  position: absolute;
+  left: 0;
+}
+
+/* Content Section */
+.contentSection {
+  margin-top: 2rem;
+  opacity: 1;
+  padding: 2rem 0;
+  transition: all 0.3s ease;
+}
+
+.columnsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.column {
+  flex: 1;
+  min-width: 250px;
+  background: rgba(20, 20, 20, 0.4);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.detailsSection {
+  margin-bottom: 2rem;
+}
+
+.detailsSection:last-child {
+  margin-bottom: 0;
+}
+
+.detailsTitle {
+  color: #ff1493;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.detailsTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #ff1493, #8a2be2);
+}
+
+.sectionBreak {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #333, transparent);
+  margin: 2rem 0;
+  border: none;
+}
+
+.noBullet {
+  list-style: none !important;
+  margin-left: -1.2rem !important;
+}
+
+.noBullet::before {
+  display: none !important;
+}
+
+.detailsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.detailsList li {
+  font-family: 'Poppins', sans-serif;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.detailsList li::before {
+  content: '•';
+  color: #ff1493;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1.2rem;
+  font-size: 1.2em;
+  line-height: 1;
+  position: relative;
+  top: 0.1em;
+}
+
+.highlightText {
+  color: #ff1493;
+  font-weight: 500;
+}
+
+/* Content Section */
+.contentSection {
+  margin-top: 2rem;
+  opacity: 1;
+  padding: 2rem 0;
+  transition: all 0.3s ease;
+}
+
+/* Responsive adjustments for expanded content */
+@media (max-width: 768px) {
+  .detailsSection {
+    margin-bottom: 1.5rem;
+  }
+  
+  .detailsTitle {
+    font-size: 1.2rem;
+  }
+  
+  .detailsList li {
+    font-size: 0.95rem;
+  }
 }
 
 /* Responsive styles */
