@@ -14,6 +14,7 @@ import Music from './components/Music/Music';
 import Events from './components/Events/Events';
 import Gallery from './components/Gallery/Gallery';
 import Merch from './components/Merch/Merch';
+import Equipment from './components/Equipment/Equipment';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 
@@ -67,6 +68,7 @@ function App() {
                 <Music />
                 <Events />
                 <Gallery />
+                <Equipment />
                 <Merch />
                 <Contact />
               </>

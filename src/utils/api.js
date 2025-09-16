@@ -4,6 +4,53 @@
  */
 
 /**
+ * Fetches all equipment items
+ * @returns {Promise<Array>} Array of equipment item objects
+ */
+export const getEquipment = async () => {
+  try {
+    const response = await fetch('/data/equipment.json');
+    if (!response.ok) {
+      throw new Error('Failed to fetch equipment');
+    }
+    const data = await response.json();
+    return data.items || [];
+  } catch (error) {
+    console.error('Error fetching equipment:', error);
+    return [];
+  }
+};
+
+/**
+ * Fetches featured equipment items
+ * @returns {Promise<Array>} Array of featured equipment item objects
+ */
+export const getFeaturedEquipment = async () => {
+  try {
+    const items = await getEquipment();
+    return items.slice(0, 3); // Return first 3 items as featured
+  } catch (error) {
+    console.error('Error fetching featured equipment:', error);
+    return [];
+  }
+};
+
+/**
+ * Fetches an equipment item by ID
+ * @param {number} id - Equipment ID
+ * @returns {Promise<Object|null>} Equipment item or null if not found
+ */
+export const getEquipmentById = async (id) => {
+  try {
+    const items = await getEquipment();
+    return items.find(item => item.id === id) || null;
+  } catch (error) {
+    console.error(`Error fetching equipment with ID ${id}:`, error);
+    return null;
+  }
+};
+
+/**
  * Fetches all merchandise items
  * @returns {Promise<Array>} Array of merchandise item objects
  */

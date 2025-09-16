@@ -1,0 +1,212 @@
+.equipment {
+  padding: 5rem 0;
+  background-color: var(--bg-color-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.equipment::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.equipmentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.equipmentCard {
+  background: var(--bg-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.equipmentCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.equipmentImage {
+  position: relative;
+  padding-top: 75%;
+  overflow: hidden;
+  background-color: var(--bg-color-secondary);
+}
+
+.equipmentImage img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.equipmentCard:hover .equipmentImage img {
+  transform: scale(1.05);
+}
+
+.equipmentInfo {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.equipmentName {
+  font-size: 1.4rem;
+  margin: 0 0 0.5rem;
+  color: var(--text-color);
+}
+
+.equipmentCategory {
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 1rem;
+}
+
+.equipmentDescription {
+  color: var(--text-secondary);
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.equipmentSpecs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.specItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-color-secondary);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.specItem i {
+  color: var(--accent-color);
+  font-size: 0.9rem;
+}
+
+.newBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--accent-color);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.comingSoon {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--bg-color);
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.comingSoonContent {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.comingSoon i {
+  font-size: 3rem;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.comingSoon h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.comingSoon p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 3rem 0;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.loading i,
+.error i {
+  margin-right: 0.5rem;
+  color: var(--accent-color);
+}
+
+.error {
+  color: #ff6b6b;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .equipmentGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .equipment {
+    padding: 4rem 0;
+  }
+  
+  .equipmentGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .comingSoon {
+    padding: 3rem 1.5rem;
+  }
+  
+  .comingSoon h3 {
+    font-size: 1.5rem;
+  }
+  
+  .comingSoon p {
+    font-size: 1rem;
+  }
+}

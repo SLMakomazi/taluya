@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Ableton Push 3",
+      "category": "MIDI Controller",
+      "description": "The ultimate standalone instrument for song creation and live performance with intuitive pad grid and deep Ableton integration.",
+      "image": "/images/equipment/push3.jpg",
+      "isNew": true,
+      "specs": [
+        {"label": "64 RGB Pads", "icon": "th"},
+        {"label": "Standalone Mode", "icon": "power-off"},
+        {"label": "M1 Chip", "icon": "microchip"},
+        {"label": "USB-C", "icon": "usb"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Moog Sub 37",
+      "category": "Analog Synth",
+      "description": "A versatile and powerful analog synthesizer with a rich, warm sound and extensive modulation capabilities.",
+      "image": "/images/equipment/sub37.jpg",
+      "isNew": false,
+      "specs": [
+        {"label": "2 Oscillators", "icon": "wave-square"},
+        {"label": "Paraphonic", "icon": "keyboard"},
+        {"label": "37 Keys", "icon": "music"},
+        {"label": "USB/MIDI", "icon": "plug"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Roland TR-8S",
+      "category": "Drum Machine",
+      "description": "A modern classic drum machine with legendary Roland sounds and modern performance features.",
+      "image": "/images/equipment/tr8s.jpg",
+      "isNew": false,
+      "specs": [
+        {"label": "11 Tracks", "icon": "sliders-h"},
+        {"label": "Sample Import", "icon": "file-audio"},
+        {"label": "FX Processor", "icon": "magic"},
+        {"label": "USB Audio", "icon": "headphones"}
+      ]
+    }
+  ]
+}
