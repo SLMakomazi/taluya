@@ -32,30 +32,68 @@
     <link rel="mask-icon" href="/favicon-new.svg" color="#ff1493">
     <meta name="theme-color" content="#ff1493">
     
-    <title>Ta Luya | Artist / DJ 🎧</title>
-    <style>
-      @keyframes flip {
-        0% { transform: scaleX(1); }
-        100% { transform: scaleX(-1); }
-      }
-      .title-emoji {
-        display: inline-block;
-        animation: flip 5s infinite alternate;
-      }
-    </style>
+    <title>Ta Luya | Artist / DJ</title>
     <script>
-      // Simple script to update the title with a flipping emoji
-      document.addEventListener('DOMContentLoaded', () => {
-        const emoji = '🎧';
-        const title = document.querySelector('title');
-        if (title) {
-          const span = document.createElement('span');
-          span.className = 'title-emoji';
-          span.textContent = emoji;
-          title.textContent = 'Ta Luya | Artist / DJ ';
-          title.appendChild(span);
-        }
+      // Prevent any other scripts from changing the title
+      const originalTitle = 'Ta Luya | Artist / DJ';
+      Object.defineProperty(document, 'title', {
+        get: () => originalTitle,
+        set: () => {}
       });
+      
+      // Set the title immediately
+      document.title = originalTitle;
+      
+      // Create a canvas for the animated favicon
+      const canvas = document.createElement('canvas');
+      canvas.width = 32;
+      canvas.height = 32;
+      const ctx = canvas.getContext('2d');
+      
+      // Create a link for the favicon
+      const favicon = document.createElement('link');
+      favicon.rel = 'icon';
+      favicon.type = 'image/png';
+      document.head.appendChild(favicon);
+      
+      // Load the headphone SVG
+      const img = new Image();
+      img.src = '/favicon-new.svg';
+      
+      let flip = false;
+      
+      function updateFavicon() {
+        ctx.save();
+        ctx.clearRect(0, 0, 32, 32);
+        
+        // Draw pink background
+        ctx.fillStyle = '#FF1493';
+        ctx.fillRect(0, 0, 32, 32);
+        
+        // Apply flip transformation if needed
+        if (flip) {
+          ctx.translate(32, 0);
+          ctx.scale(-1, 1);
+        }
+        
+        // Draw the headphone image
+        ctx.drawImage(img, 0, 0, 32, 32);
+        ctx.restore();
+        
+        // Update favicon
+        favicon.href = canvas.toDataURL('image/png');
+        
+        // Toggle flip state for next update
+        flip = !flip;
+        
+        // Schedule next update
+        setTimeout(updateFavicon, 5000);
+      }
+      
+      // Start animation when image is loaded
+      img.onload = function() {
+        updateFavicon();
+      };
     </script>
   </head>
   <body>
