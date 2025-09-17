@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-new.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Ta Luya - Deep & Soulful House Music Producer & DJ from Cape Town, South Africa. Experience the unique sound of Afro-house and electronic music." />
     <meta name="keywords" content="Ta Luya, DJ, Deep & Soulful House Music, Producer, Cape Town, South Africa, Afro-house, Deep House, Techno" />
@@ -26,14 +26,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff1493">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-new.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-new.svg">
+    <link rel="icon" type="image/svg+xml" href="/favicon-new.svg">
+    <link rel="mask-icon" href="/favicon-new.svg" color="#ff1493">
+    <meta name="theme-color" content="#ff1493">
     
-    <title>Ta Luya | Artist / DJ</title>
-    <script src="/title-animation.js" defer></script>
+    <title>Ta Luya | Artist / DJ 🎧</title>
+    <style>
+      @keyframes flip {
+        0% { transform: scaleX(1); }
+        100% { transform: scaleX(-1); }
+      }
+      .title-emoji {
+        display: inline-block;
+        animation: flip 5s infinite alternate;
+      }
+    </style>
+    <script>
+      // Simple script to update the title with a flipping emoji
+      document.addEventListener('DOMContentLoaded', () => {
+        const emoji = '🎧';
+        const title = document.querySelector('title');
+        if (title) {
+          const span = document.createElement('span');
+          span.className = 'title-emoji';
+          span.textContent = emoji;
+          title.textContent = 'Ta Luya | Artist / DJ ';
+          title.appendChild(span);
+        }
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
