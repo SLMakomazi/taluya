@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Footer.module.css';
@@ -8,21 +8,72 @@ gsap.registerPlugin(ScrollTrigger);
 const Footer = () => {
   const footerRef = useRef(null);
   const contentRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const buttonRef = useRef(null);
+  const [position, setPosition] = useState({ x: 20, y: 20 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
 
-  // Show/hide floating button based on scroll position
-  useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
+  // Handle mouse down on the button
+  const handleMouseDown = (e) => {
+    const button = buttonRef.current;
+    const rect = button.getBoundingClientRect();
+    
+    setOffset({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
+    
+    setIsDragging(true);
+    
+    // Prevent text selection while dragging
+    e.preventDefault();
+  };
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+  // Handle mouse move for dragging
+  const handleMouseMove = useCallback((e) => {
+    if (!isDragging) return;
+    
+    const newX = e.clientX - offset.x;
+    const newY = e.clientY - offset.y;
+    
+    // Get viewport dimensions
+    const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+    
+    // Get button dimensions
+    const buttonWidth = buttonRef.current?.offsetWidth || 50;
+    const buttonHeight = buttonRef.current?.offsetHeight || 50;
+    
+    // Calculate boundaries
+    const maxX = viewportWidth - buttonWidth;
+    const maxY = viewportHeight - buttonHeight;
+    
+    // Ensure button stays within viewport
+    const boundedX = Math.max(0, Math.min(newX, maxX));
+    const boundedY = Math.max(0, Math.min(newY, maxY));
+    
+    setPosition({ x: boundedX, y: boundedY });
+  }, [isDragging, offset]);
+
+  // Handle mouse up to stop dragging
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
   }, []);
+
+  // Add/remove event listeners for dragging
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      document.body.style.userSelect = 'none';
+    }
+    
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.userSelect = '';
+    };
+  }, [isDragging, offset, handleMouseMove, handleMouseUp]);
 
   // Scroll to top function
   const scrollToTop = () => {
@@ -105,9 +156,18 @@ const Footer = () => {
         </div>
       </div>
       <button 
-        className={`${styles.floatingButton} ${isVisible ? styles.visible : ''}`}
-        onClick={scrollToTop}
+        ref={buttonRef}
+        className={styles.floatingButton}
+        onClick={!isDragging ? scrollToTop : undefined}
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleMouseDown}
+        onTouchMove={handleMouseMove}
+        onTouchEnd={handleMouseUp}
         aria-label="Back to top"
+        style={{
+          transform: `translate(${position.x}px, ${position.y}px)`,
+          cursor: isDragging ? 'grabbing' : 'grab'
+        }}
       >
         <i className="fas fa-arrow-up"></i>
       </button>

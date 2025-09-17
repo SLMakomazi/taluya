@@ -269,35 +269,49 @@
 
 .floatingButton {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background: linear-gradient(45deg, #ff1493, #8a2be2);
   color: white;
   border: none;
-  cursor: pointer;
+  cursor: grab;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-}
-
-.floatingButton.visible {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  touch-action: none; /* Prevent touch events from being intercepted */
+  user-select: none; /* Prevent text selection during drag */
 }
 
-.floatingButton:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+.floatingButton:active {
+  cursor: grabbing;
+  transform: scale(0.98);
+}
+
+.floatingButton i {
+  font-size: 1.2rem;
+  pointer-events: none; /* Prevent icon from interfering with button clicks */
+}
+
+/* Ensure button is above other content */
+.floatingButton {
+  z-index: 9999;
+}
+
+/* Add a subtle pulse animation when not being dragged */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 20, 147, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 20, 147, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 20, 147, 0); }
+}
+
+.floatingButton:not(:active) {
+  animation: pulse 2s infinite;
 }
 
 /* Responsive styles */
