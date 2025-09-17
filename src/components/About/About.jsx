@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './About.module.css';
-import taLuyaImage from '@/heroImages/487460468_4113766728951079_631340646104197273_n.jpg';
+const taLuyaImage = '/heroImages/487460468_4113766728951079_631340646104197273_n.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
