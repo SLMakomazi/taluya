@@ -7,7 +7,7 @@
       "description": "The ultimate standalone instrument for song creation and live performance with intuitive pad grid and deep Ableton integration.",
       "image": "/images/equipment/push3.jpg",
       "isNew": true,
-      "show": true,
+      "show": false,
       "specs": [
         {"label": "64 RGB Pads", "icon": "th"},
         {"label": "Standalone Mode", "icon": "power-off"},

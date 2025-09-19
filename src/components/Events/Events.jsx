@@ -76,7 +76,7 @@ const Events = () => {
   }, [loading, error]);
 
   return (
-    <section className={`${styles.events} section`} ref={sectionRef}>
+    <section id="events" className={`${styles.events} section`} ref={sectionRef}>
       <div className="container">
         <h2 className="section-title" ref={titleRef}>
           Upcoming Events

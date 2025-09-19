@@ -215,19 +215,19 @@ const BookingSection = () => {
               
               <div className={styles.contactInfo}>
                 <h4>Contact Directly</h4>
-                <p><i className="fas fa-envelope"></i> bookings@taluya.com</p>
-                <p><i className="fas fa-phone"></i> +1 (555) 123-4567</p>
-                <p><i className="fas fa-map-marker-alt"></i> Based in [Your City]</p>
+                <p><i className="fas fa-envelope"></i> bookings@taluya.co.za</p>
+                <p><i className="fas fa-phone"></i> +27 61 282 5618</p>
+                <p><i className="fas fa-map-marker-alt"></i> Based in Cape Town, South Africa</p>
               </div>
               
               <div className={styles.socialLinks}>
-                <a href="https://instagram.com/taluya" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <a href="https://www.instagram.com/ta_luya1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <i className="fab fa-instagram"></i>
                 </a>
-                <a href="https://soundcloud.com/taluya" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">
+                <a href="https://hearthis.at/luniko-ta-luya-mkontwana/" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">
                   <i className="fab fa-soundcloud"></i>
                 </a>
-                <a href="https://facebook.com/taluya" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <a href="https://www.facebook.com/djluyandaluya.mkontwana" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                   <i className="fab fa-facebook"></i>
                 </a>
               </div>

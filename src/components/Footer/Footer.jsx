@@ -128,7 +128,7 @@ const Footer = () => {
           <div className={styles.footerContact}>
             <h3>Contact Info</h3>
             <p>Email: booking@taluya.co.za</p>
-            <p>Phone: +27 12 345 6789</p>
+            <p>Phone: +27 61 282 5618</p>
             <p>Cape Town, South Africa</p>
           </div>
           
