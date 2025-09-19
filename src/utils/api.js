@@ -13,18 +13,23 @@ import merchandiseData from '../data/merch.json';
  */
 export const getEquipment = async () => {
   try {
+    let items = [];
+    
     // In development, import the JSON directly
     if (import.meta.env.DEV) {
-      return equipmentData.items || [];
+      items = equipmentData.items || [];
+    } else {
+      // In production, fetch from the public directory
+      const response = await fetch('/data/equipment.json');
+      if (!response.ok) {
+        throw new Error('Failed to fetch equipment');
+      }
+      const data = await response.json();
+      items = data.items || [];
     }
     
-    // In production, fetch from the public directory
-    const response = await fetch('/data/equipment.json');
-    if (!response.ok) {
-      throw new Error('Failed to fetch equipment');
-    }
-    const data = await response.json();
-    return data.items || [];
+    // Filter out items where show is false or undefined
+    return items.filter(item => item.show !== false);
   } catch (error) {
     console.error('Error fetching equipment:', error);
     return [];
@@ -38,7 +43,8 @@ export const getEquipment = async () => {
 export const getFeaturedEquipment = async () => {
   try {
     const items = await getEquipment();
-    return items.slice(0, 3); // Return first 3 items as featured
+    // Return first 3 visible items as featured
+    return items.filter(item => item.show !== false).slice(0, 3);
   } catch (error) {
     console.error('Error fetching featured equipment:', error);
     return [];
@@ -66,18 +72,23 @@ export const getEquipmentById = async (id) => {
  */
 export const getMerchandise = async () => {
   try {
+    let items = [];
+    
     // In development, import the JSON directly
     if (import.meta.env.DEV) {
-      return merchandiseData.items || [];
+      items = merchandiseData.items || [];
+    } else {
+      // In production, fetch from the public directory
+      const response = await fetch('/data/merch.json');
+      if (!response.ok) {
+        throw new Error('Failed to fetch merchandise');
+      }
+      const data = await response.json();
+      items = data.items || [];
     }
     
-    // In production, fetch from the public directory
-    const response = await fetch('/data/merch.json');
-    if (!response.ok) {
-      throw new Error('Failed to fetch merchandise');
-    }
-    const data = await response.json();
-    return data.items || [];
+    // Filter out items where show is false or undefined
+    return items.filter(item => item.show !== false);
   } catch (error) {
     console.error('Error fetching merchandise:', error);
     return [];
@@ -91,7 +102,8 @@ export const getMerchandise = async () => {
 export const getFeaturedMerchandise = async () => {
   try {
     const items = await getMerchandise();
-    return items.slice(0, 3); // Return first 3 items as featured
+    // Return first 3 visible items as featured
+    return items.filter(item => item.show !== false).slice(0, 3);
   } catch (error) {
     console.error('Error fetching featured merchandise:', error);
     return [];

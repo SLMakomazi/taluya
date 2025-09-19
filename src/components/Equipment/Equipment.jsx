@@ -91,6 +91,25 @@ const Equipment = () => {
     );
   }
 
+  // Show coming soon message if no items are available
+  if (equipmentItems.length === 0) {
+    return (
+      <section className={`${styles.equipment} section`} ref={sectionRef} id="equipment">
+        <div className="container">
+          <h2 className="section-title" ref={titleRef}>Entertainment Equipment Hire</h2>
+          
+          <div className={styles.comingSoon}>
+            <div className={styles.comingSoonContent}>
+              <i className="fas fa-tools"></i>
+              <h3>Equipment List Coming Soon</h3>
+              <p>I'm currently putting together a detailed list of all my music production and performance equipment.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className={`${styles.equipment} section`} ref={sectionRef} id="equipment">
       <Helmet>
@@ -102,41 +121,31 @@ const Equipment = () => {
         <h2 className="section-title" ref={titleRef}>Entertainment Equipment Hire</h2>
         
         <div className={styles.equipmentGrid} ref={contentRef}>
-          {equipmentItems.length > 0 ? (
-            equipmentItems.map((item) => (
-              <div key={item.id} className={styles.equipmentCard}>
-                <div className={styles.equipmentImage}>
-                  <img 
-                    src={item.image} 
-                    alt={item.name}
-                    loading="lazy"
-                    onError={(e) => (e.target.src = '/images/placeholder-equipment.jpg')}
-                  />
-                  {item.isNew && <span className={styles.newBadge}>New</span>}
-                </div>
-                <div className={styles.equipmentInfo}>
-                  <h3 className={styles.equipmentName}>{item.name}</h3>
-                  <p className={styles.equipmentCategory}>{item.category}</p>
-                  <p className={styles.equipmentDescription}>{item.description}</p>
-                  <div className={styles.equipmentSpecs}>
-                    {item.specs && item.specs.map((spec, index) => (
-                      <span key={index} className={styles.specItem}>
-                        <i className={`fas fa-${spec.icon || 'check'}`}></i> {spec.label}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+          {equipmentItems.map((item) => (
+            <div key={item.id} className={styles.equipmentCard}>
+              <div className={styles.equipmentImage}>
+                <img 
+                  src={item.image} 
+                  alt={item.name}
+                  loading="lazy"
+                  onError={(e) => (e.target.src = '/images/placeholder-equipment.jpg')}
+                />
+                {item.isNew && <span className={styles.newBadge}>New</span>}
               </div>
-            ))
-          ) : (
-            <div className={styles.comingSoon}>
-              <div className={styles.comingSoonContent}>
-                <i className="fas fa-tools"></i>
-                <h3>Equipment List Coming Soon</h3>
-                <p>I'm currently putting together a detailed list of all my music production and performance equipment.</p>
+              <div className={styles.equipmentInfo}>
+                <h3 className={styles.equipmentName}>{item.name}</h3>
+                <p className={styles.equipmentCategory}>{item.category}</p>
+                <p className={styles.equipmentDescription}>{item.description}</p>
+                <div className={styles.equipmentSpecs}>
+                  {item.specs && item.specs.map((spec, index) => (
+                    <span key={index} className={styles.specItem}>
+                      <i className={`fas fa-${spec.icon || 'check'}`}></i> {spec.label}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          )}
+          ))}
         </div>
       </div>
     </section>

@@ -91,23 +91,34 @@ const Merch = () => {
     );
   }
 
+  // Show coming soon message if no items are available
+  if (merchItems.length === 0) {
+    return (
+      <section className={`${styles.merch} section`} ref={sectionRef} id="merch">
+        <div className="container">
+          <h2 className="section-title" ref={titleRef}>Merchandise</h2>
+          
+          <div className={styles.comingSoon}>
+            <div className={styles.comingSoonContent}>
+              <i className="fas fa-tshirt"></i>
+              <h3>Coming Soon</h3>
+              <p>Our exclusive merchandise collection is on its way!</p>
+              <p>Sign up for updates to be the first to know when it drops.</p>
+              <button className={styles.notifyBtn}>
+                Notify Me
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className={`${styles.merch} section`} ref={sectionRef} id="merch">
       <div className="container">
         <h2 className="section-title" ref={titleRef}>Merchandise</h2>
         
-        <div className={styles.comingSoon}>
-          <div className={styles.comingSoonContent}>
-            <i className="fas fa-tshirt"></i>
-            <h3>Coming Soon</h3>
-            <p>Our exclusive merchandise collection is on its way!</p>
-            <p>Sign up for updates to be the first to know when it drops.</p>
-            <button className={styles.notifyBtn}>
-              Notify Me
-            </button>
-          </div>
-        </div>
-
         <div className={styles.merchGrid} ref={contentRef}>
           {merchItems.map((item) => (
             <div key={item.id} className={styles.merchCard}>

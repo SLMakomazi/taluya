@@ -11,7 +11,8 @@
       "isNew": true,
       "isBestSeller": true,
       "category": "apparel",
-      "stock": 42
+      "stock": 42,
+      "show": false
     },
     {
       "id": 2,
@@ -24,7 +25,8 @@
       "isNew": false,
       "isBestSeller": true,
       "category": "accessories",
-      "stock": 28
+      "stock": 28,
+      "show": false 
     },
     {
       "id": 3,
@@ -37,7 +39,8 @@
       "isNew": true,
       "isBestSeller": false,
       "category": "accessories",
-      "stock": 65
+      "stock": 65,
+      "show": false
     }
   ]
 }
