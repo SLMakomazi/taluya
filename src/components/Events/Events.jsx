@@ -21,15 +21,24 @@ const Events = () => {
         const today = new Date();
         today.setHours(0, 0, 0, 0); // Reset time part for accurate date comparison
         
+        // Function to parse date string in format "Sunday, 26 October 2025"
+        const parseEventDate = (dateStr) => {
+          // Extract day, month, and year from the date string
+          const parts = dateStr.split(' ');
+          const day = parseInt(parts[1], 10);
+          const month = new Date(Date.parse(parts[2] + ' 1, 2012')).getMonth();
+          const year = parseInt(parts[3], 10);
+          return new Date(year, month, day);
+        };
+        
         // Filter out past events
         const upcomingEvents = data.filter(event => {
-          const eventDate = new Date(event.date);
-          eventDate.setHours(0, 0, 0, 0);
+          const eventDate = parseEventDate(event.date);
           return eventDate >= today;
         });
         
         // Sort events by date (earliest first)
-        upcomingEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+        upcomingEvents.sort((a, b) => parseEventDate(a.date) - parseEventDate(b.date));
         
         setEvents(upcomingEvents);
         setLoading(false);

@@ -6,6 +6,8 @@
 import equipmentData from '../data/equipment.json';
 import eventsData from '../data/events.json';
 import merchandiseData from '../data/merch.json';
+import galleryData from '../data/gallery.json';
+import mixesData from '../data/mixes.json';
 
 /**
  * Fetches all equipment items
@@ -13,23 +15,8 @@ import merchandiseData from '../data/merch.json';
  */
 export const getEquipment = async () => {
   try {
-    let items = [];
-    
-    // In development, import the JSON directly
-    if (import.meta.env.DEV) {
-      items = equipmentData.items || [];
-    } else {
-      // In production, fetch from the public directory
-      const response = await fetch('/data/equipment.json');
-      if (!response.ok) {
-        throw new Error('Failed to fetch equipment');
-      }
-      const data = await response.json();
-      items = data.items || [];
-    }
-    
-    // Filter out items where show is false or undefined
-    return items.filter(item => item.show !== false);
+    // Use the imported data directly in both dev and production
+    return (equipmentData.items || []).filter(item => item.show !== false);
   } catch (error) {
     console.error('Error fetching equipment:', error);
     return [];
@@ -72,23 +59,8 @@ export const getEquipmentById = async (id) => {
  */
 export const getMerchandise = async () => {
   try {
-    let items = [];
-    
-    // In development, import the JSON directly
-    if (import.meta.env.DEV) {
-      items = merchandiseData.items || [];
-    } else {
-      // In production, fetch from the public directory
-      const response = await fetch('/data/merch.json');
-      if (!response.ok) {
-        throw new Error('Failed to fetch merchandise');
-      }
-      const data = await response.json();
-      items = data.items || [];
-    }
-    
-    // Filter out items where show is false or undefined
-    return items.filter(item => item.show !== false);
+    // Use the imported data directly in both dev and production
+    return (merchandiseData.items || []).filter(item => item.show !== false);
   } catch (error) {
     console.error('Error fetching merchandise:', error);
     return [];
@@ -131,17 +103,8 @@ export const getMerchandiseById = async (id) => {
  */
 export const getEvents = async () => {
   try {
-    // In development, import the JSON directly
-    if (import.meta.env.DEV) {
-      return eventsData;
-    }
-    
-    // In production, fetch from the public directory
-    const response = await fetch('/data/events.json');
-    if (!response.ok) {
-      throw new Error('Failed to fetch events');
-    }
-    return await response.json();
+    // eventsData is already an array, so we return it directly
+    return Array.isArray(eventsData) ? eventsData : [];
   } catch (error) {
     console.error('Error fetching events:', error);
     return [];
@@ -183,12 +146,8 @@ export const getEventById = async (id) => {
  */
 export const getGalleryItems = async () => {
   try {
-    const response = await fetch('/data/gallery.json');
-    if (!response.ok) {
-      throw new Error('Failed to fetch gallery items');
-    }
-    const data = await response.json();
-    return data;
+    // Use the imported data directly in both dev and production
+    return galleryData || [];
   } catch (error) {
     console.error('Error fetching gallery items:', error);
     return [];
@@ -216,12 +175,8 @@ export const getGalleryItemsByCategory = async (category) => {
  */
 export const getMixes = async () => {
   try {
-    const response = await fetch('/data/mixes.json');
-    if (!response.ok) {
-      throw new Error('Failed to fetch mixes');
-    }
-    const data = await response.json();
-    return data;
+    // Use the imported data directly in both dev and production
+    return mixesData || [];
   } catch (error) {
     console.error('Error fetching mixes:', error);
     return [];
