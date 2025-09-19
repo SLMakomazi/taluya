@@ -108,9 +108,9 @@ const Hero = () => {
             >
               Listen Now
             </button>
-            <Link to="/bookings" className={styles.secondaryButton}>
+            <a href="#booking" className={styles.secondaryButton}>
               Book Now
-            </Link>
+            </a>
           </div>
           <div 
             ref={scrollIndicatorRef} 

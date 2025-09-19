@@ -14,9 +14,8 @@ import Music from './components/Music/Music';
 import Events from './components/Events/Events';
 import Gallery from './components/Gallery/Gallery';
 import Merch from './components/Merch/Merch';
+import BookingSection from './components/BookingSection/BookingSection';
 import Equipment from './components/Equipment/Equipment';
-import Bookings from './components/Bookings/Bookings';
-import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 
 // Add Font Awesome icons to library
@@ -70,11 +69,11 @@ function App() {
                 <Events />
                 <Gallery />
                 <Equipment />
+                <BookingSection />
                 <Merch />
               </>
             } />
-            <Route path="/bookings" element={<Bookings />} />
-            <Route path="/contact" element={<Contact />} />
+            
           </Routes>
         </main>
         <Footer />

@@ -14,4 +14,26 @@ export default defineConfig({
       '@': resolve(__dirname, './src'), // @ = src
     },
   },
+  server: {
+    // Configure static file serving
+    fs: {
+      // Allow serving files from one level up from the package root
+      allow: ['..']
+    }
+  },
+  // Ensure JSON files are properly handled
+  json: {
+    stringify: false
+  },
+  // Configure build settings
+  build: {
+    // Copy public directory to dist
+    assetsDir: 'assets',
+    // Ensure static files are copied to the right location
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name][extname]'
+      }
+    }
+  }
 });

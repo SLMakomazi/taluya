@@ -1,0 +1,389 @@
+.bookingSection {
+  padding: 6rem 0;
+  background-color: var(--bg-color);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg-color) 0%, #050505 100%);
+}
+
+.bookingContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.sectionHeader p {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.bookingFormWrapper {
+  background: rgba(26, 26, 26, 0.8);
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 20, 147, 0.1);
+}
+
+.bookingForm {
+  margin-top: 2rem;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+}
+
+.formGroup textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.errorInput {
+  border-color: #ff4d4f !important;
+}
+
+.errorMessage {
+  color: #ff4d4f;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.alert {
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.success {
+  background-color: rgba(82, 196, 26, 0.1);
+  border: 1px solid rgba(82, 196, 26, 0.3);
+  color: #52c41a;
+}
+
+.error {
+  background-color: rgba(255, 77, 79, 0.1);
+  border: 1px solid rgba(255, 77, 79, 0.3);
+  color: #ff4d4f;
+}
+
+.formFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.submitButton {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  padding: 0.9rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.submitButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.submitButton:hover::before {
+  width: 100%;
+}
+
+.submitButton:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.submitButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.requiredNote {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.bookingInfo {
+  margin-top: 2rem;
+}
+
+.infoCard {
+  background: rgba(26, 26, 26, 0.8);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(138, 43, 226, 0.1);
+  height: 100%;
+}
+
+.infoCard h3 {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.infoCard h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.infoCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.infoCard ul li {
+  padding: 0.5rem 0 0.5rem 1.8rem;
+  position: relative;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.infoCard ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: bold;
+}
+
+.contactInfo {
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.contactInfo h4 {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  display: inline-block;
+}
+
+.contactInfo p {
+  display: flex;
+  align-items: center;
+  margin: 0.75rem 0;
+  color: var(--text-color);
+}
+
+.contactInfo i {
+  margin-right: 0.75rem;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  width: 20px;
+  text-align: center;
+  font-weight: 900;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.socialLinks a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.socialLinks a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: var(--bg-color);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.socialLinks a:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.socialLinks a:hover::before {
+  height: 100%;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .formGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .formGroup.fullWidth {
+    grid-column: 1 / -1;
+  }
+  
+  .formFooter {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .submitButton {
+    margin-bottom: 0;
+    margin-right: 1rem;
+  }
+  
+  .requiredNote {
+    text-align: right;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bookingContent {
+    grid-template-columns: 2fr 1fr;
+  }
+  
+  .bookingInfo {
+    margin-top: 0;
+  }
+  
+  .formGrid {
+    gap: 1.5rem 2rem;
+  }
+}
+
+/* Color variables */
+:root {
+  --primary-color: #ff1493;
+  --primary-rgb: 255, 20, 147;
+  --secondary-color: #8a2be2;
+  --bg-color: #0a0a0a;
+  --card-bg: #1a1a1a;
+  --text-color: #ffffff;
+  --text-muted: #f0f0f0;
+  --border-color: #333333;
+  --input-bg: #0a0a0a;
+  --error-color: #ff4d4f;
+  --success-color: #52c41a;
+}

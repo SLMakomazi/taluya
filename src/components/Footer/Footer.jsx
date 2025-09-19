@@ -121,14 +121,13 @@ const Footer = () => {
               <li><a href="/#music">Music</a></li>
               <li><a href="/#events">Events</a></li>
               <li><a href="/#gallery">Gallery</a></li>
-              <li><a href="/bookings">Bookings</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li><a href="/#booking">Bookings</a></li>
             </ul>
           </div>
           
           <div className={styles.footerContact}>
             <h3>Contact Info</h3>
-            <p>Email: booking@taluya.com</p>
+            <p>Email: booking@taluya.co.za</p>
             <p>Phone: +27 12 345 6789</p>
             <p>Cape Town, South Africa</p>
           </div>

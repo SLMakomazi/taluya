@@ -14,48 +14,24 @@ const Events = () => {
   const titleRef = useRef(null);
   const contentRef = useRef(null);
 
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
-  };
-
-  const formatTime = (timeString) => {
-    const [hours, minutes] = timeString.split(':');
-    const hour = parseInt(hours, 10);
-    const ampm = hour >= 12 ? 'PM' : 'AM';
-    const hour12 = hour % 12 || 12;
-    return `${hour12}:${minutes} ${ampm}`;
-  };
-
-  const handleShareEvent = async (event) => {
-    const shareData = {
-      title: event.title,
-      text: `Check out ${event.title} at ${event.venue} on ${formatDate(event.date)}`,
-      url: window.location.href,
-    };
-
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData);
-      } else {
-        const textArea = document.createElement('textarea');
-        textArea.value = `${shareData.text}\n${shareData.url}`;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        alert('Event link copied to clipboard!');
-      }
-    } catch (err) {
-      console.error('Error sharing event:', err);
-    }
-  };
-
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const data = await getEvents(); // Your API call returning JSON
-        setEvents(data);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Reset time part for accurate date comparison
+        
+        // Filter out past events
+        const upcomingEvents = data.filter(event => {
+          const eventDate = new Date(event.date);
+          eventDate.setHours(0, 0, 0, 0);
+          return eventDate >= today;
+        });
+        
+        // Sort events by date (earliest first)
+        upcomingEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        setEvents(upcomingEvents);
         setLoading(false);
       } catch (err) {
         console.error('Error fetching events:', err);
@@ -121,50 +97,18 @@ const Events = () => {
                       loading="lazy"
                       onError={(e) => (e.target.src = '/images/placeholder-event.jpg')}
                     />
-                    {event.isFeatured && (
-                      <span className={styles.featuredBadge}>
-                        <i className="fas fa-star"></i> Featured
-                      </span>
-                    )}
                   </div>
 
                   <div className={styles.eventDetails}>
-                    <div className={styles.eventDate}>
-                      <span className={styles.dateDay}>
-                        {new Date(event.date).getDate()}
-                      </span>
-                      <span className={styles.dateMonth}>
-                        {new Date(event.date).toLocaleString('default', { month: 'short' })}
-                      </span>
-                    </div>
-
                     <div className={styles.eventInfo}>
                       <h3 className={styles.eventTitle}>{event.title}</h3>
                       <div className={styles.eventMeta}>
                         <span className={styles.eventVenue}>
                           <i className="fas fa-map-marker-alt"></i> {event.venue}, {event.city}
                         </span>
-                        <span className={styles.eventTime}>
-                          <i className="far fa-clock"></i> {formatTime(event.time)}
+                        <span className={styles.eventDate}>
+                          <i className="far fa-calendar"></i> {new Date(event.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
                         </span>
-                      </div>
-                      <p className={styles.eventDescription}>{event.description}</p>
-
-                      <div className={styles.eventActions}>
-                        <a
-                          href={event.ticketUrl || '#'}
-                          className="btn btn-primary"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <i className="fas fa-ticket-alt"></i> Get Tickets
-                        </a>
-                        <button
-                          className={styles.shareButton}
-                          onClick={() => handleShareEvent(event)}
-                        >
-                          <i className="fas fa-share-alt"></i>
-                        </button>
                       </div>
                     </div>
                   </div>
@@ -174,13 +118,6 @@ const Events = () => {
           )}
         </div>
 
-        {events.length > 0 && (
-          <div className={styles.viewMore}>
-            <a href="/events" className="btn btn-outline">
-              View All Events
-            </a>
-          </div>
-        )}
       </div>
     </section>
   );

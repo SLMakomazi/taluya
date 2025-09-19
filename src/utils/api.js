@@ -3,12 +3,22 @@
  * Handles all data fetching operations for the application
  */
 
+import equipmentData from '../data/equipment.json';
+import eventsData from '../data/events.json';
+import merchandiseData from '../data/merch.json';
+
 /**
  * Fetches all equipment items
  * @returns {Promise<Array>} Array of equipment item objects
  */
 export const getEquipment = async () => {
   try {
+    // In development, import the JSON directly
+    if (import.meta.env.DEV) {
+      return equipmentData.items || [];
+    }
+    
+    // In production, fetch from the public directory
     const response = await fetch('/data/equipment.json');
     if (!response.ok) {
       throw new Error('Failed to fetch equipment');
@@ -56,6 +66,12 @@ export const getEquipmentById = async (id) => {
  */
 export const getMerchandise = async () => {
   try {
+    // In development, import the JSON directly
+    if (import.meta.env.DEV) {
+      return merchandiseData.items || [];
+    }
+    
+    // In production, fetch from the public directory
     const response = await fetch('/data/merch.json');
     if (!response.ok) {
       throw new Error('Failed to fetch merchandise');
@@ -103,12 +119,17 @@ export const getMerchandiseById = async (id) => {
  */
 export const getEvents = async () => {
   try {
+    // In development, import the JSON directly
+    if (import.meta.env.DEV) {
+      return eventsData;
+    }
+    
+    // In production, fetch from the public directory
     const response = await fetch('/data/events.json');
     if (!response.ok) {
       throw new Error('Failed to fetch events');
     }
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.error('Error fetching events:', error);
     return [];
