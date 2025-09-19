@@ -40,7 +40,7 @@
       "isBestSeller": false,
       "category": "accessories",
       "stock": 65,
-      "show": false
+      "show": true
     }
   ]
 }
