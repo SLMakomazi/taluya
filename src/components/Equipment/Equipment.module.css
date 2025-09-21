@@ -1,6 +1,6 @@
 .equipment {
   padding: 5rem 0;
-  background-color: var(--bg-color-secondary);
+  background-color: var(--darker-bg);
   position: relative;
   overflow: hidden;
 }
@@ -23,11 +23,12 @@
 }
 
 .equipmentCard {
-  background: var(--bg-color);
+  background: var(--dark-bg);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -35,14 +36,15 @@
 
 .equipmentCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  border-color: var(--primary-color);
 }
 
 .equipmentImage {
   position: relative;
   padding-top: 75%;
   overflow: hidden;
-  background-color: var(--bg-color-secondary);
+  background-color: var(--darker-bg);
 }
 
 .equipmentImage img {
@@ -59,6 +61,33 @@
   transform: scale(1.05);
 }
 
+/* Always-visible action area */
+.cardActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.hireButton {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.hireButton:hover {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 24px rgba(255, 20, 147, 0.3);
+}
+
 .equipmentInfo {
   padding: 1.5rem;
   flex: 1;
@@ -69,11 +98,11 @@
 .equipmentName {
   font-size: 1.4rem;
   margin: 0 0 0.5rem;
-  color: var(--text-color);
+  color: var(--light-text);
 }
 
 .equipmentCategory {
-  color: var(--accent-color);
+  color: var(--primary-color);
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -82,7 +111,7 @@
 }
 
 .equipmentDescription {
-  color: var(--text-secondary);
+  color: #ccc;
   margin: 0 0 1.5rem;
   font-size: 0.95rem;
   line-height: 1.6;
@@ -102,15 +131,15 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--bg-color-secondary);
+  background: var(--darker-bg);
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   font-size: 0.8rem;
-  color: var(--text-secondary);
+  color: #ccc;
 }
 
 .specItem i {
-  color: var(--accent-color);
+  color: var(--primary-color);
   font-size: 0.9rem;
 }
 
@@ -118,7 +147,7 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: var(--accent-color);
+  background: var(--primary-color);
   color: #fff;
   padding: 0.3rem 0.8rem;
   border-radius: 20px;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -15,6 +16,7 @@ const Equipment = () => {
   const [equipmentItems, setEquipmentItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // Fetch equipment data
   useEffect(() => {
@@ -136,6 +138,25 @@ const Equipment = () => {
                 <h3 className={styles.equipmentName}>{item.name}</h3>
                 <p className={styles.equipmentCategory}>{item.category}</p>
                 <p className={styles.equipmentDescription}>{item.description}</p>
+                <div className={styles.cardActions}>
+                  <button
+                    type="button"
+                    className={styles.hireButton}
+                    onClick={() => {
+                      const params = new URLSearchParams({
+                        booking: '1',
+                        eventType: 'equipment_hire',
+                        equipmentId: String(item.id),
+                        equipmentName: item.name,
+                        equipmentCategory: item.category,
+                      });
+                      navigate(`/?${params.toString()}#booking`);
+                    }}
+                    aria-label={`Hire ${item.name}`}
+                  >
+                    Hire Me
+                  </button>
+                </div>
                 <div className={styles.equipmentSpecs}>
                   {item.specs && item.specs.map((spec, index) => (
                     <span key={index} className={styles.specItem}>

@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useForm } from 'react-hook-form';
@@ -15,7 +16,18 @@ const BookingSection = () => {
   const titleRef = useRef(null);
   const contentRef = useRef(null);
   
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      eventType: '',
+      eventDate: '',
+      location: '',
+      message: ''
+    }
+  });
+  const locationHook = useLocation();
 
   // Animation on component mount
   useEffect(() => {
@@ -42,6 +54,26 @@ const BookingSection = () => {
       );
     }
   }, []);
+
+  // Prefill form from query params
+  useEffect(() => {
+    const searchParams = new URLSearchParams(locationHook.search);
+    const booking = searchParams.get('booking');
+    const eventTypeParam = searchParams.get('eventType');
+    const equipmentId = searchParams.get('equipmentId');
+    const equipmentName = searchParams.get('equipmentName');
+    const equipmentCategory = searchParams.get('equipmentCategory');
+
+    if (booking === '1' && eventTypeParam === 'equipment_hire') {
+      const prefillMessage = `Equipment Hire Request\n\nEquipment: ${equipmentName || 'N/A'}${equipmentCategory ? ` (${equipmentCategory})` : ''}${equipmentId ? `\nID: ${equipmentId}` : ''}\n\nPlease fill in the rest of the form with your details (name, email, phone, event date, and location) and send it. We'll get back to you soon.`;
+
+      reset((current) => ({
+        ...current,
+        eventType: 'equipment_hire',
+        message: prefillMessage,
+      }));
+    }
+  }, [locationHook.search, reset]);
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
@@ -137,6 +169,7 @@ const BookingSection = () => {
                     className={errors.eventType ? styles.errorInput : ''}
                   >
                     <option value="">Select Event Type</option>
+                    <option value="equipment_hire">Equipment Hire</option>
                     <option value="wedding">Wedding</option>
                     <option value="corporate">Corporate Event</option>
                     <option value="birthday">Birthday Party</option>
