@@ -65,7 +65,7 @@ const BookingSection = () => {
     const equipmentCategory = searchParams.get('equipmentCategory');
 
     if (booking === '1' && eventTypeParam === 'equipment_hire') {
-      const prefillMessage = `Equipment Hire Request\n\nEquipment: ${equipmentName || 'N/A'}${equipmentCategory ? ` (${equipmentCategory})` : ''}${equipmentId ? `\nID: ${equipmentId}` : ''}\n\nPlease fill in the rest of the form with your details (name, email, phone, event date, and location) and send it. We'll get back to you soon.`;
+      const prefillMessage = `Equipment Hire Request\n\nEquipment: ${equipmentName || 'N/A'}${equipmentCategory ? ` (${equipmentCategory})` : ''}${equipmentId ? `\nID: ${equipmentId}` : ''}`;
 
       reset((current) => ({
         ...current,

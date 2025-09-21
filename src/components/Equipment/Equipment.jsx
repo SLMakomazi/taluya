@@ -16,6 +16,8 @@ const Equipment = () => {
   const [equipmentItems, setEquipmentItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [pendingParams, setPendingParams] = useState(null);
   const navigate = useNavigate();
 
   // Fetch equipment data
@@ -150,7 +152,8 @@ const Equipment = () => {
                         equipmentName: item.name,
                         equipmentCategory: item.category,
                       });
-                      navigate(`/?${params.toString()}#booking`);
+                      setPendingParams(params);
+                      setShowModal(true);
                     }}
                     aria-label={`Hire ${item.name}`}
                   >
@@ -169,6 +172,39 @@ const Equipment = () => {
           ))}
         </div>
       </div>
+
+      {showModal && (
+        <div className={styles.modalBackdrop} role="dialog" aria-modal="true" aria-labelledby="equipment-hire-modal-title">
+          <div className={styles.modal}>
+            <h3 id="equipment-hire-modal-title" className={styles.modalTitle}>Equipment Hire</h3>
+            <p className={styles.modalMessage}>
+              Please fill in the rest of the form with your details (name, email, phone, event date, and location) and send it. We'll get back to you soon.
+            </p>
+            <div className={styles.modalActions}>
+              <button
+                type="button"
+                className={styles.modalCloseButton}
+                onClick={() => {
+                  setShowModal(false);
+                  if (pendingParams) {
+                    const to = `/?${pendingParams.toString()}#booking`;
+                    navigate(to);
+                    setTimeout(() => {
+                      const el = document.getElementById('booking');
+                      if (el) {
+                        const middle = el.offsetTop + el.clientHeight / 2 - window.innerHeight / 2;
+                        window.scrollTo({ top: Math.max(0, middle), behavior: 'smooth' });
+                      }
+                    }, 100);
+                  }
+                }}
+              >
+                Continue
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

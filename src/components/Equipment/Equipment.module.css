@@ -158,6 +158,63 @@
   z-index: 1;
 }
 
+/* Modal styles */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal {
+  width: 100%;
+  max-width: 520px;
+  background: var(--dark-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+}
+
+.modalTitle {
+  margin: 0 0 0.5rem 0;
+  color: var(--light-text);
+}
+
+.modalMessage {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.modalCloseButton {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modalCloseButton:hover {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 24px rgba(255, 20, 147, 0.3);
+}
+
 .comingSoon {
   grid-column: 1 / -1;
   text-align: center;
