@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { getFeaturedEquipment } from '../../utils/api';
+import { getEquipment } from '../../utils/api';
 import styles from './Equipment.module.css';
 
 // Register GSAP ScrollTrigger plugin
@@ -21,7 +21,7 @@ const Equipment = () => {
     const fetchEquipment = async () => {
       try {
         setLoading(true);
-        const data = await getFeaturedEquipment();
+        const data = await getEquipment();
         setEquipmentItems(data);
         setLoading(false);
       } catch (err) {

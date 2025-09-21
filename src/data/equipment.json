@@ -2,47 +2,77 @@
   "items": [
     {
       "id": 1,
-      "name": "Ableton Push 3",
-      "category": "MIDI Controller",
-      "description": "The ultimate standalone instrument for song creation and live performance with intuitive pad grid and deep Ableton integration.",
-      "image": "/images/equipment/push3.jpg",
+      "name": "Pioneer CDJ-350",
+      "category": "Media Player",
+      "description": "Digital multi player with USB and CD support, perfect for professional DJs and mobile setups.",
+      "image": "/equipments/cdj-350-angle.jpg",
       "isNew": true,
-      "show": false,
+      "show": true,
       "specs": [
-        {"label": "64 RGB Pads", "icon": "th"},
-        {"label": "Standalone Mode", "icon": "power-off"},
-        {"label": "M1 Chip", "icon": "microchip"},
-        {"label": "USB-C", "icon": "usb"}
+        {"label": "MP3/AAC/WAV/AIFF", "icon": "file-audio"},
+        {"label": "Beat Display", "icon": "wave-square"},
+        {"label": "BPM Lock", "icon": "clock"},
+        {"label": "MIDI Controller", "icon": "gamepad"}
       ]
     },
     {
       "id": 2,
-      "name": "Moog Sub 37",
-      "category": "Analog Synth",
-      "description": "A versatile and powerful analog synthesizer with a rich, warm sound and extensive modulation capabilities.",
-      "image": "/images/equipment/sub37.jpg",
+      "name": "Pioneer DJM-350",
+      "category": "DJ Mixer",
+      "description": "2-channel DJ mixer with built-in USB recording and professional sound quality.",
+      "image": "/equipments/djm-350-angle.jpg",
       "isNew": false,
-      "show": false,
+      "show": true,
       "specs": [
-        {"label": "2 Oscillators", "icon": "wave-square"},
-        {"label": "Paraphonic", "icon": "keyboard"},
-        {"label": "37 Keys", "icon": "music"},
-        {"label": "USB/MIDI", "icon": "plug"}
+        {"label": "2 Channels", "icon": "sliders-h"},
+        {"label": "USB Recording", "icon": "save"},
+        {"label": "3-Band EQ", "icon": "equalizer"},
+        {"label": "Effect Filters", "icon": "magic"}
       ]
     },
     {
       "id": 3,
-      "name": "Roland TR-8S",
-      "category": "Drum Machine",
-      "description": "A modern classic drum machine with legendary Roland sounds and modern performance features.",
-      "image": "/images/equipment/tr8s.jpg",
-      "isNew": false,
-      "show": false,
+      "name": "Hybrid+ 15\" Bass Bin",
+      "category": "Subwoofer",
+      "description": "Powerful 15-inch passive subwoofer delivering deep bass for any event.",
+      "image": "/equipments/bassbin15.jpg",
+      "isNew": true,
+      "show": true,
       "specs": [
-        {"label": "11 Tracks", "icon": "sliders-h"},
-        {"label": "Sample Import", "icon": "file-audio"},
-        {"label": "FX Processor", "icon": "magic"},
-        {"label": "USB Audio", "icon": "headphones"}
+        {"label": "15\" Driver", "icon": "volume-up"},
+        {"label": "High SPL", "icon": "bullhorn"},
+        {"label": "Rugged Design", "icon": "shield-alt"},
+        {"label": "Mobile Use", "icon": "truck"}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Hybrid+ PK18SUE Subwoofer",
+      "category": "Bass Speaker",
+      "description": "Professional 18-inch bass reflex subwoofer for powerful low-end performance.",
+      "image": "/equipments/pk18s.jpg",
+      "isNew": true,
+      "show": true,
+      "specs": [
+        {"label": "18\" Driver", "icon": "volume-up"},
+        {"label": "High Power", "icon": "bolt"},
+        {"label": "Touring Grade", "icon": "suitcase"},
+        {"label": "Club Sound", "icon": "music"}
+      ]
+    },
+    {
+      "id": 5,
+      "name": "X2 Tops (Speakers)",
+      "category": "PA System",
+      "description": "Full-range PA speakers for clear, powerful sound reinforcement.",
+      "image": "/equipments/tops.jpg",
+      "isNew": false,
+      "show": true,
+      "specs": [
+        {"label": "Full-Range", "icon": "volume-up"},
+        {"label": "Pole Mountable", "icon": "arrows-alt-v"},
+        {"label": "Clear Highs", "icon": "wave-square"},
+        {"label": "Versatile Use", "icon": "th-large"}
       ]
     }
   ]
