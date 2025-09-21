@@ -5,6 +5,20 @@
   overflow: hidden;
 }
 
+/* Ensure the section title is centered in the Equipment section on all screens */
+.equipment .section-title {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.equipment .section-title::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .equipment::before {
   content: '';
   position: absolute;
