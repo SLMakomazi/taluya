@@ -74,6 +74,21 @@
         {"label": "Clear Highs", "icon": "wave-square"},
         {"label": "Versatile Use", "icon": "th-large"}
       ]
+    },
+    {
+      "id": 6,
+      "name": "Full System Equipment Hire",
+      "category": "Complete Setup",
+      "description": "Complete DJ and PA system hire combining all listed equipment into one package for events.",
+      "image": "/equipments/combined.png",
+      "isNew": true,
+      "show": true,
+      "specs": [
+        {"label": "CDJs + Mixer", "icon": "compact-disc"},
+        {"label": "Tops + Subs", "icon": "volume-up"},
+        {"label": "High Power", "icon": "bolt"},
+        {"label": "Event Ready", "icon": "calendar-check"}
+      ]
     }
   ]
 }
