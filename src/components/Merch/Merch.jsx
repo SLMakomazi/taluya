@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -15,6 +16,10 @@ const Merch = () => {
   const [merchItems, setMerchItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [activeItem, setActiveItem] = useState(null);
+  const [selectedSize, setSelectedSize] = useState('');
+  const navigate = useNavigate();
 
   // Fetch merch data
   useEffect(() => {
@@ -129,18 +134,23 @@ const Merch = () => {
                   loading="lazy"
                   onError={(e) => (e.target.src = '/images/placeholder-merch.jpg')}
                 />
-                {item.isNew && <span className={styles.newBadge}>New</span>}
-                {item.isBestSeller && <span className={styles.bestSellerBadge}>Bestseller</span>}
               </div>
               <div className={styles.merchInfo}>
                 <h3 className={styles.merchName}>{item.name}</h3>
-                <p className={styles.merchPrice}>${item.price.toFixed(2)}</p>
+                <p className={styles.merchPrice}>R {item.price.toFixed(2)}</p>
                 <div className={styles.merchActions}>
-                  <button className={styles.viewBtn}>
-                    View Details
-                  </button>
-                  <button className={styles.cartBtn}>
-                    <i className="fas fa-shopping-cart"></i> Add to Cart
+                  <button
+                    className={styles.cartBtn}
+                    type="button"
+                    onClick={() => {
+                      setActiveItem(item);
+                      const defaultSize = Array.isArray(item.sizes) && item.sizes.length > 0 ? item.sizes[0] : 'M';
+                      setSelectedSize(defaultSize);
+                      setShowModal(true);
+                    }}
+                    aria-label={`Buy ${item.name}`}
+                  >
+                    Buy
                   </button>
                 </div>
               </div>
@@ -148,6 +158,60 @@ const Merch = () => {
           ))}
         </div>
       </div>
+
+      {showModal && activeItem && (
+        <div className={styles.modalBackdrop} role="dialog" aria-modal="true" aria-labelledby="merch-buy-modal-title">
+          <div className={styles.modal}>
+            <h3 id="merch-buy-modal-title" className={styles.modalTitle}>Buy {activeItem.name}</h3>
+            <p className={styles.modalMessage}>
+              Select your preferred size to continue to the booking form. We'll prefill your selection for you.
+            </p>
+
+            <div className={styles.sizeOptions} role="group" aria-label="Select size">
+              {(activeItem.sizes || ['S','M','L','XL']).map((size) => (
+                <label key={size} className={styles.sizeOption}>
+                  <input
+                    type="radio"
+                    name="merch-size"
+                    value={size}
+                    checked={selectedSize === size}
+                    onChange={() => setSelectedSize(size)}
+                  />
+                  <span>{size}</span>
+                </label>
+              ))}
+            </div>
+
+            <div className={styles.modalActions}>
+              <button
+                type="button"
+                className={styles.modalCloseButton}
+                onClick={() => {
+                  setShowModal(false);
+                  const params = new URLSearchParams({
+                    booking: '1',
+                    eventType: 'merch_purchase',
+                    merchId: String(activeItem.id),
+                    merchName: activeItem.name,
+                    merchSize: selectedSize || 'M',
+                  });
+                  const to = `/?${params.toString()}#booking`;
+                  navigate(to);
+                  setTimeout(() => {
+                    const el = document.getElementById('booking');
+                    if (el) {
+                      const middle = el.offsetTop + el.clientHeight / 2 - window.innerHeight / 2;
+                      window.scrollTo({ top: Math.max(0, middle), behavior: 'smooth' });
+                    }
+                  }, 100);
+                }}
+              >
+                Continue
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

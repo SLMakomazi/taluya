@@ -63,6 +63,9 @@ const BookingSection = () => {
     const equipmentId = searchParams.get('equipmentId');
     const equipmentName = searchParams.get('equipmentName');
     const equipmentCategory = searchParams.get('equipmentCategory');
+    const merchId = searchParams.get('merchId');
+    const merchName = searchParams.get('merchName');
+    const merchSize = searchParams.get('merchSize');
 
     if (booking === '1' && eventTypeParam === 'equipment_hire') {
       const prefillMessage = `Equipment Hire Request\n\nEquipment: ${equipmentName || 'N/A'}${equipmentCategory ? ` (${equipmentCategory})` : ''}${equipmentId ? `\nID: ${equipmentId}` : ''}`;
@@ -70,6 +73,16 @@ const BookingSection = () => {
       reset((current) => ({
         ...current,
         eventType: 'equipment_hire',
+        message: prefillMessage,
+      }));
+    }
+
+    if (booking === '1' && eventTypeParam === 'merch_purchase') {
+      const prefillMessage = `Merch Purchase Request\n\nItem: ${merchName || 'N/A'}${merchId ? `\nID: ${merchId}` : ''}${merchSize ? `\nSize: ${merchSize}` : ''}`;
+
+      reset((current) => ({
+        ...current,
+        eventType: 'merch_purchase',
         message: prefillMessage,
       }));
     }
@@ -170,6 +183,7 @@ const BookingSection = () => {
                   >
                     <option value="">Select Event Type</option>
                     <option value="equipment_hire">Equipment Hire</option>
+                    <option value="merch_purchase">Merch Purchase</option>
                     <option value="wedding">Wedding</option>
                     <option value="corporate">Corporate Event</option>
                     <option value="birthday">Birthday Party</option>

@@ -2,45 +2,21 @@
   "items": [
     {
       "id": 1,
-      "name": "Signature T-Shirt",
-      "description": "Premium quality cotton t-shirt with Ta Luya logo",
-      "price": 29.99,
-      "image": "/images/merch/tshirt.jpg",
+      "name": "T-Shirt Ta Luya Back&Front Print",
+      "description": "Limited edition Ta Luya merch item.",
+      "price": 299.99,
+      "image": "/merch/WhatsApp Image 2025-09-21 at 22.11.26_f1466c8f.jpg",
       "sizes": ["S", "M", "L", "XL"],
-      "colors": ["Black", "White", "Grey"],
-      "isNew": true,
-      "isBestSeller": true,
-      "category": "apparel",
-      "stock": 42,
-      "show": false
+      "show": true
     },
     {
       "id": 2,
-      "name": "Logo Cap",
-      "description": "Adjustable snapback cap with embroidered logo",
-      "price": 24.99,
-      "image": "/images/merch/cap.jpg",
-      "sizes": ["One Size"],
-      "colors": ["Black", "Navy"],
-      "isNew": false,
-      "isBestSeller": true,
-      "category": "accessories",
-      "stock": 28,
-      "show": false 
-    },
-    {
-      "id": 3,
-      "name": "Vinyl Sticker Pack",
-      "description": "Set of 3 high-quality vinyl stickers",
-      "price": 9.99,
-      "image": "/images/merch/stickers.jpg",
-      "sizes": ["One Size"],
-      "colors": ["Assorted"],
-      "isNew": true,
-      "isBestSeller": false,
-      "category": "accessories",
-      "stock": 65,
-      "show": false 
+      "name": "Sweater Ta Luya Print",
+      "description": "Exclusive Ta Luya merch item.",
+      "price": 499.99,
+      "image": "/merch/WhatsApp Image 2025-09-21 at 22.12.02_8e2a48f0.jpg",
+      "sizes": ["S", "M", "L", "XL"],
+      "show": true
     }
   ]
 }
