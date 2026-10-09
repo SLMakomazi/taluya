@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Import global styles
 import './styles/global.css';
 import App from './App.jsx';
+import { initializeTelemetry } from './telemetry/otel.js';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -71,6 +72,9 @@ const setupApp = () => {
     </StrictMode>
   );
 };
+
+// Start optional browser tracing before React mounts.
+initializeTelemetry();
 
 // Initialize the app
 setupApp();
